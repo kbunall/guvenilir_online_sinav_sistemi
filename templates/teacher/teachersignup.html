@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style>
+
+        form{
+           margin: 50px; 
+          
+        }
+
+    </style>
+  </head>
+  <body>
+    {% include "exam/navbar.html" %}
+ 
+
+
+<br><br><br>
+<div class="container">
+  <h3 style="text-align: center;">Öğretmen Kayıt Formu</h3>
+<form method="POST" autocomplete="off" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="first_name">İsim</label>
+          {% render_field userForm.first_name|attr:'required:true'  class="form-control"  placeholder="İsim" %}
+        </div>
+        <div class="form-group col-md-6">
+          <label for="last_name">Soy İsim</label>
+          {% render_field userForm.last_name|attr:'required:true'  class="form-control" placeholder="Soy İsim" %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="mobile">İletişim</label>
+          {% render_field teacherForm.mobile|attr:'required:true'  class="form-control" placeholder="İletişim Numarası" %}
+        </div>
+        <div class="form-group col-md-6">
+          <label for="address">Adres</label>
+          {% render_field teacherForm.address|attr:'required:true'  class="form-control" placeholder="Adres" %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="username">Kullanıcı Adı</label>
+          {% render_field userForm.username|attr:'required:true'  class="form-control" placeholder="Kullanıcı Adı" %}
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Şifre</label>
+          {% render_field userForm.password|attr:'required:true'  class="form-control" placeholder="Şifre" %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="profile_pic">Profil Fotoğrafı</label>
+          {% render_field teacherForm.profile_pic|attr:'required:true' class="form-control" placeholder="" %}
+        </div>
+        
+      </div>
+
+
+    <button type="submit" class="btn btn-success" style="border-radius:0px;">Kayıt Ol</button>
+  </form>
+</div>
+
+
+<br><br>
+{% include "exam/footer.html" %}
+  </body>
+</html>
